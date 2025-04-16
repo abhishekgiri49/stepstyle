@@ -82,7 +82,7 @@ function getProductData(productId) {
         `.product-card[data-id="${productId}"]`
     );
     if (!productElement) return null;
-console.log(productElement.querySelector(".product-title").textContent);
+    console.log(productElement.querySelector(".product-title").textContent);
 
     return {
         id: parseInt(productId),
@@ -356,6 +356,40 @@ document.addEventListener("DOMContentLoaded", function () {
     cartToggle.addEventListener("click", function (e) {
         e.preventDefault();
         toggleCart();
+    });
+
+    const navbar = document.querySelector(".navbar");
+    const body = document.body;
+    let lastScroll = 0;
+    const navbarHeight = navbar.offsetHeight;
+
+    window.addEventListener("scroll", function () {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+            // At top of page
+            navbar.classList.remove("sticky");
+            body.classList.remove("sticky-nav");
+            return;
+        }
+
+        if (
+            currentScroll > lastScroll &&
+            !navbar.classList.contains("sticky")
+        ) {
+            // Scrolling down - make sticky
+            navbar.classList.add("sticky");
+            body.classList.add("sticky-nav");
+        } else if (
+            currentScroll < lastScroll &&
+            navbar.classList.contains("sticky")
+        ) {
+            // Scrolling up - keep sticky
+            navbar.classList.add("sticky");
+            body.classList.add("sticky-nav");
+        }
+
+        lastScroll = currentScroll;
     });
 
     closeCart.addEventListener("click", toggleCart);

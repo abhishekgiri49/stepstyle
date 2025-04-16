@@ -3,6 +3,15 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="description" content="StepStyle - Premium Footwear" />
+    <meta name="keywords" content="footwear, shoes, sneakers, premium, style" />
+    <meta name="author" content="StepStyle" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="notranslate" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="{{ asset('/frontend/images/logo.png') }}" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StepStyle - Premium Footwear</title>
     <link
@@ -18,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">StepStyle</a>
+            <a class="navbar-brand" href="#"><img src="{{asset('/frontend/images/logo.png')}}" class="w-50"/></a>
             <button
                 class="navbar-toggler"
                 type="button"

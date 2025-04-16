@@ -27,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="{{asset('/frontend/images/logo.png')}}" class="w-50"/></a>
+            <a class="navbar-brand" href="#"><img src="{{asset('/frontend/images/logo.png')}}" class="w-25 h-25"/></a>
             <button
                 class="navbar-toggler"
                 type="button"

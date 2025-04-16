@@ -142,10 +142,10 @@
 
                     <div class="product-card" data-id="{{ $product->id }}">
                         <div class="product-img">
-                            <img src="{{asset($product->image_url)}}" alt="{{$product->title}}" />
+                            <img src="{{asset($product->image_url)}}" alt="{{$product->name}}" />
                         </div>
                         <div class="product-info">
-                            <h5 class="product-title">{{$product->title}}</h5>
+                            <h5 class="product-title">{{$product->name}}</h5>
                             <div class="product-price">{{$product->price}}</div>
                             <div class="crypto-price">≈ {{$product->btc_price}} BTC</div>
                             <div class="rating">
@@ -286,11 +286,11 @@
                         <div>
                             <h4>Follow Us</h4>
                             <div class="social-icons mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-pinterest"></i></a>
-                    </div>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

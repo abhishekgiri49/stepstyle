@@ -82,6 +82,7 @@ function getProductData(productId) {
         `.product-card[data-id="${productId}"]`
     );
     if (!productElement) return null;
+console.log(productElement.querySelector(".product-title").textContent);
 
     return {
         id: parseInt(productId),

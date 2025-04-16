@@ -27,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="{{asset('/frontend/images/logo.png')}}" class="w-25 h-25"/></a>
+            <a class="navbar-brand" href="#"><img src="{{asset('/frontend/images/logo.png')}}" class="w-25 h-25" /></a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -285,12 +285,12 @@
                         </div>
                         <div>
                             <h4>Follow Us</h4>
-                            <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-pinterest"></i></a>
-                            </div>
+                            <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
                         </div>
                     </div>
                 </div>

@@ -343,7 +343,7 @@ function openCryptoPayment() {
 // Close crypto payment modal
 function closeCryptoPayment() {
     cryptoPaymentModal.classList.remove("active");
-
+    overlay.classList.remove("active");
     // Clear timer interval
     if (paymentTimer.dataset.intervalId) {
         clearInterval(parseInt(paymentTimer.dataset.intervalId));

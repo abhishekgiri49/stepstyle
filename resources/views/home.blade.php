@@ -13,6 +13,8 @@
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="{{ asset('/frontend/images/logo.png') }}" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js"></script>
     <title>StepStyle - Premium Footwear</title>
     <link
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
@@ -58,11 +60,7 @@
                             <span class="cart-badge">0</span>
                         </a>
                     </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

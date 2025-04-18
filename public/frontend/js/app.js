@@ -148,14 +148,32 @@ function addToCart(productId, quantity) {
     updateCart();
 
     // Show notification
-    alert(`${product.title} added to cart!`);
+    // alert(`${product.title} added to cart!`);
 
+    showToast("success", `${product.title} has been added to your cart.`);
     // Close modal if open
     if (quickViewModal.classList.contains("active")) {
         closeQuickView();
     }
 }
+function showToast(icon, title) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+    });
 
+    Toast.fire({
+        icon: icon,
+        title: title,
+    });
+}
 // Update cart
 function updateCart() {
     cartItemsContainer.innerHTML = "";
@@ -207,6 +225,7 @@ function updateCart() {
     cartBadge.textContent = totalItems;
     cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
     cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+    showToast("success", "Cart updated successfully.");
 }
 
 // Remove from cart
@@ -237,7 +256,8 @@ function startPaymentTimer() {
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("Payment time expired. Please try again.");
+            showToast("error", "Payment time expired. Please try again.");
+            // alert("Payment time expired. Please try again.");
             closeCryptoPayment();
         }
     }, 1000);
@@ -440,32 +460,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     checkoutBtn.addEventListener("click", function () {
-        const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-    
+        const paymentMethod = document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
+
         if (paymentMethod === "crypto") {
-            const selectedCrypto = document.querySelector('input[name="crypto"]:checked').value;
-            const totalAmount = document.getElementById("cart-total").innerText.replace("$", "");
-    
+            const selectedCrypto = document.querySelector(
+                'input[name="crypto"]:checked'
+            ).value;
+            const totalAmount = document
+                .getElementById("cart-total")
+                .innerText.replace("$", "");
+
             // Call Laravel backend to create Coinbase charge
-            fetch('/create-crypto-payment', {
-                method: 'POST',
+            fetch("/create-crypto-payment", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector(
+                        'meta[name="csrf-token"]'
+                    ).content,
                 },
                 body: JSON.stringify({
                     amount: totalAmount,
-                    currency: 'USD', // or dynamically set
+                    currency: "USD", // or dynamically set
                     crypto: selectedCrypto,
                 }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.hosted_url) {
-                    window.location.href = data.hosted_url; // Redirect to Coinbase checkout
-                }
-            })
-            .catch(error => console.error('Error:', error));
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.hosted_url) {
+                        window.location.href = data.hosted_url; // Redirect to Coinbase checkout
+                    }
+                })
+                .catch((error) => console.error("Error:", error));
         } else {
             alert("Redirecting to card payment gateway...");
             // Handle card payment logic

@@ -572,3 +572,100 @@ footer {
 .timer span {
     color: var(--primary-color);
 }
+.page {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.success-page {
+    border-top: 5px solid #4CAF50;
+}
+
+.cancelled-page {
+    border-top: 5px solid #f44336;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-icon {
+    background-color: #e8f5e9;
+    color: #4CAF50;
+}
+
+.cancelled-icon {
+    background-color: #ffebee;
+    color: #f44336;
+}
+
+
+
+
+
+.order-details {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #3d8b40;
+}
+
+.button.secondary {
+    background-color: #f44336;
+}
+
+.button.secondary:hover {
+    background-color: #d32f2f;
+}
+
+.button.tertiary {
+    background-color: #2196F3;
+}
+
+.button.tertiary:hover {
+    background-color: #1976D2;
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 30px 20px;
+    }
+}

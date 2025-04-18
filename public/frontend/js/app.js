@@ -440,15 +440,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     checkoutBtn.addEventListener("click", function () {
-        const paymentMethod = document.querySelector(
-            'input[name="payment"]:checked'
-        ).value;
-
+        const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+    
         if (paymentMethod === "crypto") {
-            openCryptoPayment();
+            const selectedCrypto = document.querySelector('input[name="crypto"]:checked').value;
+            const totalAmount = document.getElementById("cart-total").innerText.replace("$", "");
+    
+            // Call Laravel backend to create Coinbase charge
+            fetch('/create-crypto-payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                },
+                body: JSON.stringify({
+                    amount: totalAmount,
+                    currency: 'USD', // or dynamically set
+                    crypto: selectedCrypto,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.hosted_url) {
+                    window.location.href = data.hosted_url; // Redirect to Coinbase checkout
+                }
+            })
+            .catch(error => console.error('Error:', error));
         } else {
             alert("Redirecting to card payment gateway...");
-            // In a real implementation, you would redirect to your payment processor
+            // Handle card payment logic
         }
     });
 

@@ -526,6 +526,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('/frontend/js/app.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+        <script src="https://commerce.coinbase.com/v1/checkout.js"></script>
+        
 
 </body>
 
